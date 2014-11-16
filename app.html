@@ -1,0 +1,15 @@
+<head>
+  <title>Quel resto ?</title>
+</head>
+
+<body>
+  <h1>Quel resto ?</h1>
+
+  {{> restaurants}}
+</body>
+
+<template name="restaurants">
+{{#each restos}}
+    <h2>{{name}}</h2>
+{{/each}}
+</template>
