@@ -9,6 +9,11 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Votez pour les restaurants qui vous font du bien ;-)</a>
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons }}
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -50,11 +55,8 @@
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-star"></span> {{votes}}
                 </button>
-                <button type="button" class="btn btn-default">
+                <button type="button" class="btn btn-default vote">
                     <span class="glyphicon glyphicon-thumbs-up"></span>
-                </button>
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-thumbs-down"></span>
                 </button>
             </p>
             <p>{{description}}</p>

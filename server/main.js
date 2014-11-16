@@ -2,6 +2,27 @@ Meteor.publish('restaurants', function(){
     return Restaurant.find();
 });
 
+Meteor.methods({
+    vote: function (restaurantId) {
+        if (!this.userId) {
+            throw new Meteor.Error('logged-out', 'Veuillez vous connecter');
+        }
+        var resto = Restaurant.findOne(restaurantId);
+        if (!resto) {
+            throw new Meteor.Error('not-found', 'Restaurant non trouvé');
+        }
+        var options = {
+            $inc: {
+                votes: 1
+            },
+            $push: {
+                supporters: this.userId
+            }
+        };
+        Restaurant.update(restaurantId, options);
+    }
+});
+
 Meteor.startup(function(){
     if (Restaurant.find().count() === 0) {
         Restaurant.insert({
