@@ -3,6 +3,15 @@ Meteor.subscribe('restaurants');
 Template.restaurants.helpers({
     restos: function () {
         return Restaurant.find({}, {sort: {votes: -1}});
+    },
+    hasVoted: function (restaurantId) {
+        var resto = Restaurant.findOne({
+            _id: restaurantId,
+            supporters: {$elemMatch: {
+                id: Meteor.userId()
+            }}
+        });
+        return resto != null;
     }
 });
 

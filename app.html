@@ -55,7 +55,7 @@
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-star"></span> {{votes}}
                 </button>
-                <button type="button" class="btn btn-default vote">
+                <button type="button" class="btn btn-default vote {{#if hasVoted _id}}btn-success{{/if}}">
                     <span class="glyphicon glyphicon-thumbs-up"></span>
                 </button>
             </p>
