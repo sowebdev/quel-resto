@@ -11,15 +11,27 @@ Meteor.methods({
         if (!resto) {
             throw new Meteor.Error('not-found', 'Restaurant non trouvé');
         }
-        var options = {
-            $inc: {
-                votes: 1
-            },
-            $push: {
-                supporters: this.userId
-            }
-        };
-        Restaurant.update(restaurantId, options);
+        var updateOptions = {};
+        if (_.findWhere(resto.supporters, {id: this.userId})) {
+            updateOptions = {
+                $inc: {
+                    votes: -1
+                },
+                $pull: {
+                    supporters: {id: this.userId}
+                }
+            };
+        } else {
+            updateOptions = {
+                $inc: {
+                    votes: 1
+                },
+                $push: {
+                    supporters: {id: this.userId}
+                }
+            };
+        }
+        Restaurant.update(restaurantId, updateOptions);
     }
 });
 
