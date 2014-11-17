@@ -27,7 +27,7 @@ Meteor.methods({
                     votes: 1
                 },
                 $push: {
-                    supporters: {id: this.userId}
+                    supporters: {id: this.userId, name: Meteor.user().username}
                 }
             };
         }
