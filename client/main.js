@@ -3,15 +3,6 @@ Meteor.subscribe('restaurants');
 Template.restaurants.helpers({
     restos: function () {
         return Restaurant.find({}, {sort: {votes: -1}});
-    },
-    hasVoted: function (restaurantId) {
-        var resto = Restaurant.findOne({
-            _id: restaurantId,
-            supporters: {$elemMatch: {
-                id: Meteor.userId()
-            }}
-        });
-        return resto != null;
     }
 });
 
@@ -25,3 +16,22 @@ Template.restaurants.events({
         return false;
     }
 });
+
+Template.resto.helpers({
+    hasVoted: function (restaurantId) {
+        var resto = Restaurant.findOne({
+            _id: restaurantId,
+            supporters: {$elemMatch: {
+                id: Meteor.userId()
+            }}
+        });
+        return resto != null;
+    },
+    formatSupporters: function() {
+        return Blaze.toHTMLWithData(Template.supporters_popover, this);
+    }
+});
+
+Template.resto.rendered = function() {
+    jQuery('[data-toggle="popover"]').popover({html:true});
+};

@@ -45,6 +45,12 @@
 
 <template name="restaurants">
 {{#each restos}}
+    {{> resto}}
+    <hr>
+{{/each}}
+</template>
+
+<template name="resto">
     <div class="row">
         <div class="col-md-7">
             <img class="img-responsive" src="{{img}}" alt="">
@@ -52,7 +58,12 @@
         <div class="col-md-5">
             <h3>{{name}}</h3>
             <p>
-                <button type="button" class="btn btn-default">
+                <button type="button"
+                        class="btn btn-default"
+                        data-toggle="popover"
+                        title="Ceux qui ont voté"
+                        data-placement="left"
+                        data-content="{{formatSupporters}}">
                     <span class="glyphicon glyphicon-star"></span> {{votes}}
                 </button>
                 <button type="button" class="btn btn-default vote {{#if hasVoted _id}}btn-success{{/if}}">
@@ -62,6 +73,16 @@
             <p>{{description}}</p>
         </div>
     </div>
-    <hr>
-{{/each}}
+</template>
+
+<template name="supporters_popover">
+    {{#if supporters}}
+        <ul class="list-unstyled">
+        {{#each supporters}}
+            <li><span class="glyphicon glyphicon-user"></span> {{name}}</li>
+        {{/each}}
+        </ul>
+    {{else}}
+        Rien
+    {{/if}}
 </template>
