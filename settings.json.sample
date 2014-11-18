@@ -13,5 +13,9 @@
                 "description": "A description.",
                 "votes": 0
             }
-        ]
+    ],
+    "kadira": {
+        "appId": "APP_ID",
+        "appSecret": "APP_SECRET"
+    }
 }
