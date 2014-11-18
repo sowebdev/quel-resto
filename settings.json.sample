@@ -1,0 +1,17 @@
+{
+    "restrictCreationByEmailDomain": "domain.com",
+    "predefinedData":[
+            {
+                "name": "Test",
+                "img": "http://www.something.com/image.png",
+                "description": "A description.",
+                "votes": 0
+            },
+            {
+                "name": "Test 2",
+                "img": "http://www.something.com/image.png",
+                "description": "A description.",
+                "votes": 0
+            }
+        ]
+}
