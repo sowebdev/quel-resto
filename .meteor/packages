@@ -7,4 +7,5 @@ meteor-platform
 ian:accounts-ui-bootstrap-3
 accounts-password
 underscore
+mrt:moment
 
