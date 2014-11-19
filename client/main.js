@@ -1,5 +1,17 @@
 Meteor.subscribe('restaurants');
 
+VotingPeriod = new ReactiveVar();
+
+Meteor.call('votingPeriod', function(error, result) {
+    if (!error) {
+        VotingPeriod.set(result);
+    }
+});
+
+UI.registerHelper('votingPeriod', function() {
+    return VotingPeriod.get();
+});
+
 Template.restaurants.helpers({
     restos: function () {
         return Restaurant.find({}, {sort: {votes: -1}});

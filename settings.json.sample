@@ -14,6 +14,13 @@
                 "votes": 0
             }
     ],
+    "clientTimezone": "Europe/Paris",
+    "votingPeriod": {
+        "hourStart": "23",
+        "minuteStart": "0",
+        "hourEnd": "23",
+        "minuteEnd": "10"
+    },
     "kadira": {
         "appId": "APP_ID",
         "appSecret": "APP_SECRET"

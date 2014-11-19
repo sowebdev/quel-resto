@@ -11,10 +11,10 @@ Meteor.methods({
         if (!resto) {
             throw new Meteor.Error('not-found', 'Restaurant non trouvé');
         }
-        if (moment().hour() < 9) {
+        if (moment().isBefore(VotingPeriod.startDatetime)) {
             throw new Meteor.Error('too-soon', "Bien essayé, mais c'est trop tôt ;-)");
         }
-        if (moment().hour() > 12 || (moment().hour() == 12 && moment().minute() > 30)) {
+        if (moment().isAfter(VotingPeriod.endDatetime)) {
             throw new Meteor.Error('too-soon', "Bien essayé, mais c'est trop tard ;-)");
         }
         var updateOptions = {};
@@ -38,5 +38,10 @@ Meteor.methods({
             };
         }
         Restaurant.update(restaurantId, updateOptions);
+    },
+    votingPeriod: function() {
+        var start = VotingPeriod.startDatetime.tz(Meteor.settings.clientTimezone).format('HH:mm');
+        var end = VotingPeriod.endDatetime.tz(Meteor.settings.clientTimezone).format('HH:mm');
+        return "Les votes sont ouverts de " + start + " à " + end;
     }
 });

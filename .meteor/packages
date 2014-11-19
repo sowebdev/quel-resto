@@ -9,4 +9,6 @@ accounts-password
 underscore
 mrt:moment
 meteorhacks:kadira
+mrt:moment-timezone
+reactive-var
 
