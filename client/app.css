@@ -6,6 +6,10 @@ body {
     z-index: 9999;/* required so that popovers don't get over */
 }
 
+.navbar-brand {
+    font-size: 16px;/* Should not be bigger to make room to navbar toggle button*/
+}
+
 footer {
     margin: 50px 0;
 }

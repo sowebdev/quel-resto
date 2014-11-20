@@ -11,8 +11,13 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery"></span> Votez malin pour votre festin !</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 {{> loginButtons }}
             </ul>
@@ -65,7 +70,6 @@
                         class="btn btn-default"
                         data-toggle="popover"
                         title="Ceux qui ont voté"
-                        data-placement="left"
                         data-trigger="focus"
                         data-content="{{formatSupporters}}">
                     <span class="glyphicon glyphicon-star"></span> {{votes}}
