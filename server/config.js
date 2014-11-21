@@ -1,10 +1,13 @@
-if (Meteor.settings.restrictCreationByEmailDomain) {
-    Accounts.config({
-        restrictCreationByEmailDomain: Meteor.settings.restrictCreationByEmailDomain
-    });
-}
+VotingPeriod = {};
 
 Meteor.startup(function(){
+
+    if (Meteor.settings.restrictCreationByEmailDomain) {
+        Accounts.config({
+            restrictCreationByEmailDomain: Meteor.settings.restrictCreationByEmailDomain
+        });
+    }
+
     if (Restaurant.find().count() === 0) {
         if (Meteor.settings.predefinedData) {
             _.each(Meteor.settings.predefinedData, function(data){
@@ -12,15 +15,14 @@ Meteor.startup(function(){
             });
         }
     }
-});
 
-VotingPeriod = {
-    startDatetime: moment(Meteor.settings.votingPeriod.hourStart, 'H').add(
+    VotingPeriod.startDatetime = moment(Meteor.settings.votingPeriod.hourStart, 'H').add(
         Meteor.settings.votingPeriod.minuteStart,
         'minutes'
-    ),
-    endDatetime: moment(Meteor.settings.votingPeriod.hourEnd, 'H').add(
+    );
+    VotingPeriod.endDatetime = moment(Meteor.settings.votingPeriod.hourEnd, 'H').add(
         Meteor.settings.votingPeriod.minuteEnd,
         'minutes'
-    )
-};
+    );
+});
+
