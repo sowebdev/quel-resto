@@ -1,5 +1,7 @@
 #Quel resto ?
 
+**This project is no longer maintained**
+
 Vote for the places where you would like to take lunch
 
 ##Configure the application
